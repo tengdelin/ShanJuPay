@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="shanjupay-merchant-api" />
+        <module name="shanjupay-merchant-service" />
+        <module name="shanjupay-transaction-api" />
+        <module name="shanjupay-user-api" />
+        <module name="shanjupay-common" />
+        <module name="shanjupay-gateway-service" />
+        <module name="shanjupay-user-service" />
+        <module name="shanjupay-merchant-application" />
+        <module name="shanjupay-uaa-api" />
+        <module name="shanjupay-transaction-service" />
+        <module name="shanjupay-uaa-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="shanjupay" options="" />
+      <module name="shanjupay-common" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay-gateway-service" options="-parameters" />
+      <module name="shanjupay-merchant" options="" />
+      <module name="shanjupay-merchant-api" options="-parameters" />
+      <module name="shanjupay-merchant-application" options="-parameters" />
+      <module name="shanjupay-merchant-service" options="-parameters" />
+      <module name="shanjupay-transaction" options="" />
+      <module name="shanjupay-transaction-api" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay-transaction-service" options="-parameters" />
+      <module name="shanjupay-uaa-api" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay-uaa-service" options="-parameters" />
+      <module name="shanjupay-user-api" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay-user-service" options="-parameters" />
+    </option>
+  </component>
+</project>
