@@ -378,6 +378,10 @@ export default class extends Vue {
 .login-container .loginbox .rights[data-v-37dfd6fc]{
   border-radius: 15PX;
 }
+.login-container .loginbox .registryFrom[data-v-37dfd6fc] {
+  border-radius: 15PX;
+}
+
 .login-container {
   .el-input {
     display: inline-block;
@@ -385,7 +389,7 @@ export default class extends Vue {
     width: 65%;
     input {
       height: 47px;
-      border-radius: 0px;
+      border-radius: px;
       border: 0;
       padding: 12px 5px 12px 15px;
       -webkit-appearance: none;
@@ -474,8 +478,9 @@ export default class extends Vue {
 
     .registryFrom {
         width:450px;
-        height: 510px;
-        background:#fff;
+        height: 550px;
+        //background:#fff;
+        background: rgba(255,255,255,.8);
         margin:0 auto;
         margin-top:245px;
         padding:47px 40px;

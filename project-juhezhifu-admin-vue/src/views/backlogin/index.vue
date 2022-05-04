@@ -254,7 +254,7 @@ export default class extends Vue {
     .registryFrom {
         width:450px;
         height: 510px;
-        background:#fff;
+        background:#7b7b7b;
         margin:0 auto;
         margin-top:245px;
         padding:47px 40px;

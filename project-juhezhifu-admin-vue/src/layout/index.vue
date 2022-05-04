@@ -139,8 +139,8 @@ export default class extends mixins(ResizeMixin) {
   }
   .imgs {
 
-    margin-left: 50px;
-    margin-top: 12px;
+    margin-left: 90px;
+    margin-top: -15px;
     float: left;
   }
 
