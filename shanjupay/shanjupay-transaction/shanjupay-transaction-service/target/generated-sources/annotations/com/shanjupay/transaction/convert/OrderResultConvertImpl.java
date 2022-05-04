@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-04-14T19:28:21+0800",
+    date = "2022-05-03T15:38:36+0800",
     comments = "version: 1.3.0.Final, compiler: javac, environment: Java 1.8.0_301 (Oracle Corporation)"
 )
 public class OrderResultConvertImpl implements OrderResultConvert {

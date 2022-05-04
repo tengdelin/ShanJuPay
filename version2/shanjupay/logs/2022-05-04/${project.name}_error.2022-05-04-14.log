@@ -1,0 +1,34 @@
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:41,513 ERROR [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:51] -  [DUBBO] Fail to connect to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20880]], dubbo version: 2.7.3, current host: 192.168.117.139
+org.apache.dubbo.remoting.RemotingException: client(url: dubbo://172.27.156.123:20880/com.alibaba.cloud.dubbo.service.DubboMetadataService?anyhost=true&application=merchant-service&bind.ip=172.27.156.123&bind.port=20880&check=false&codec=dubbo&deprecated=false&dubbo=2.0.2&dynamic=true&generic=true&group=user-service&heartbeat=60000&interface=com.alibaba.cloud.dubbo.service.DubboMetadataService&lazy=false&methods=getAllServiceKeys,getServiceRestMetadata,getExportedURLs,getAllExportedURLs&pid=9056&qos.enable=false&qos.port=22240&register=true&register.ip=192.168.117.139&release=2.7.3&remote.application=user-service&retries=-1&revision=2.1.0.RELEASE&side=consumer&sticky=false&timeout=90000&timestamp=1651645061844&version=1.0.0) failed to connect to server /172.27.156.123:20880, error message is:connection timed out: /172.27.156.123:20880
+	at org.apache.dubbo.remoting.transport.netty4.NettyClient.doConnect(NettyClient.java:166)
+	at org.apache.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:190)
+	at org.apache.dubbo.remoting.transport.AbstractClient.reconnect(AbstractClient.java:246)
+	at org.apache.dubbo.remoting.exchange.support.header.HeaderExchangeClient.reconnect(HeaderExchangeClient.java:155)
+	at org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask.doTask(ReconnectTimerTask.java:49)
+	at org.apache.dubbo.remoting.exchange.support.header.AbstractTimerTask.run(AbstractTimerTask.java:87)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:648)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:727)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$Worker.run(HashedWheelTimer.java:449)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: io.netty.channel.ConnectTimeoutException: connection timed out: /172.27.156.123:20880
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe$1.run(AbstractNioChannel.java:267)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:127)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:404)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:495)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:905)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	... 1 more
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:44,527 ERROR [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:51] -  [DUBBO] Fail to connect to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20881]], dubbo version: 2.7.3, current host: 192.168.117.139
+org.apache.dubbo.remoting.RemotingException: client(url: dubbo://172.27.156.123:20881/com.alibaba.cloud.dubbo.service.DubboMetadataService?anyhost=true&application=merchant-service&bind.ip=172.27.156.123&bind.port=20881&check=false&codec=dubbo&deprecated=false&dubbo=2.0.2&dynamic=true&generic=true&group=uaa-service&heartbeat=60000&interface=com.alibaba.cloud.dubbo.service.DubboMetadataService&lazy=false&methods=getAllServiceKeys,getServiceRestMetadata,getExportedURLs,getAllExportedURLs&pid=9056&qos.enable=false&qos.port=22240&register=true&register.ip=192.168.117.139&release=2.7.3&remote.application=uaa-service&retries=-1&revision=2.1.0.RELEASE&side=consumer&sticky=false&timeout=90000&timestamp=1651644077162&version=1.0.0) failed to connect to server /172.27.156.123:20881 client-side timeout 3000ms (elapsed: 3012ms) from netty client 192.168.117.139 using dubbo version 2.7.3
+	at org.apache.dubbo.remoting.transport.netty4.NettyClient.doConnect(NettyClient.java:171)
+	at org.apache.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:190)
+	at org.apache.dubbo.remoting.transport.AbstractClient.reconnect(AbstractClient.java:246)
+	at org.apache.dubbo.remoting.exchange.support.header.HeaderExchangeClient.reconnect(HeaderExchangeClient.java:155)
+	at org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask.doTask(ReconnectTimerTask.java:49)
+	at org.apache.dubbo.remoting.exchange.support.header.AbstractTimerTask.run(AbstractTimerTask.java:87)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:648)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:727)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$Worker.run(HashedWheelTimer.java:449)
+	at java.lang.Thread.run(Thread.java:748)

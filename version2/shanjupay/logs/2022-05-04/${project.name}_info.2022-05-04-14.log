@@ -1,0 +1,81 @@
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,275 DEBUG [PollingServerListUpdater-1][DynamicServerListLoadBalancer.java:241] - List of Servers for merchant-application obtained from Discovery client: [192.168.10.1:57010]
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,275 DEBUG [PollingServerListUpdater-1][DynamicServerListLoadBalancer.java:246] - Filtered List of Servers for merchant-application obtained from Discovery client: [192.168.10.1:57010]
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,275 DEBUG [PollingServerListUpdater-1][BaseLoadBalancer.java:491] - LoadBalancer [merchant-application]: clearing server list (SET op)
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,275 DEBUG [PollingServerListUpdater-1][BaseLoadBalancer.java:507] - LoadBalancer [merchant-application]:  addServer [192.168.10.1:57010]
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,275 DEBUG [PollingServerListUpdater-1][DynamicServerListLoadBalancer.java:179] - Setting server list for zones: {unknown=[192.168.10.1:57010]}
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,275 DEBUG [PollingServerListUpdater-1][BaseLoadBalancer.java:491] - LoadBalancer [merchant-application_unknown]: clearing server list (SET op)
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,276 DEBUG [PollingServerListUpdater-1][BaseLoadBalancer.java:507] - LoadBalancer [merchant-application_unknown]:  addServer [192.168.10.1:57010]
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,416 ERROR [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:51] -  [DUBBO] Fail to connect to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20880]], dubbo version: 2.7.3, current host: 192.168.117.139
+org.apache.dubbo.remoting.RemotingException: client(url: dubbo://172.27.156.123:20880/com.alibaba.cloud.dubbo.service.DubboMetadataService?anyhost=true&application=payment-agent-service&bind.ip=172.27.156.123&bind.port=20880&check=false&codec=dubbo&deprecated=false&dubbo=2.0.2&dynamic=true&generic=true&group=user-service&heartbeat=60000&interface=com.alibaba.cloud.dubbo.service.DubboMetadataService&lazy=false&methods=getAllServiceKeys,getServiceRestMetadata,getExportedURLs,getAllExportedURLs&pid=6920&qos.enable=false&qos.port=22270&register=true&register.ip=192.168.117.139&release=2.7.3&remote.application=user-service&retries=-1&revision=2.1.0.RELEASE&side=consumer&sticky=false&timeout=3000&timestamp=1651645061844&version=1.0.0) failed to connect to server /172.27.156.123:20880 client-side timeout 3000ms (elapsed: 3008ms) from netty client 192.168.117.139 using dubbo version 2.7.3
+	at org.apache.dubbo.remoting.transport.netty4.NettyClient.doConnect(NettyClient.java:171)
+	at org.apache.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:190)
+	at org.apache.dubbo.remoting.transport.AbstractClient.reconnect(AbstractClient.java:246)
+	at org.apache.dubbo.remoting.exchange.support.header.HeaderExchangeClient.reconnect(HeaderExchangeClient.java:155)
+	at org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask.doTask(ReconnectTimerTask.java:49)
+	at org.apache.dubbo.remoting.exchange.support.header.AbstractTimerTask.run(AbstractTimerTask.java:87)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:648)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:727)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$Worker.run(HashedWheelTimer.java:449)
+	at java.lang.Thread.run(Thread.java:748)
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:16,417 INFO [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:48] -  [DUBBO] Initial connection to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20881]], dubbo version: 2.7.3, current host: 192.168.117.139
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:17,231 ERROR [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:51] -  [DUBBO] Fail to connect to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [172.27.156.123:0 -> /172.27.156.123:20880]], dubbo version: 2.7.3, current host: 172.27.156.123
+org.apache.dubbo.remoting.RemotingException: client(url: dubbo://172.27.156.123:20880/com.shanjupay.user.api.AuthorizationService?anyhost=true&application=uaa-service&bean.name=ServiceBean:com.shanjupay.user.api.AuthorizationService&category=providers&check=false&codec=dubbo&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&heartbeat=60000&interface=com.shanjupay.user.api.AuthorizationService&lazy=false&methods=removeRole,roleBindPrivilege,modifyRole,createRole,unbindAccountRole,queryPrivilege,queryRole,queryPrivilegeTree,queryRoleByPage,bindAccountRole,queryPrivilegeByGroupId,queryTenantRole,authorize&path=com.shanjupay.user.api.AuthorizationService&pid=2204&protocol=dubbo&qos.enable=false&qos.port=22220&register=true&register.ip=172.27.156.123&release=2.7.3&remote.application=user-service&retries=-1&side=consumer&sticky=false&timeout=3000&timestamp=1651644077052) failed to connect to server /172.27.156.123:20880, error message is:connection timed out: /172.27.156.123:20880
+	at org.apache.dubbo.remoting.transport.netty4.NettyClient.doConnect(NettyClient.java:166)
+	at org.apache.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:190)
+	at org.apache.dubbo.remoting.transport.AbstractClient.reconnect(AbstractClient.java:246)
+	at org.apache.dubbo.remoting.exchange.support.header.HeaderExchangeClient.reconnect(HeaderExchangeClient.java:155)
+	at org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask.doTask(ReconnectTimerTask.java:49)
+	at org.apache.dubbo.remoting.exchange.support.header.AbstractTimerTask.run(AbstractTimerTask.java:87)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:648)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:727)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$Worker.run(HashedWheelTimer.java:449)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: io.netty.channel.ConnectTimeoutException: connection timed out: /172.27.156.123:20880
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe$1.run(AbstractNioChannel.java:267)
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38)
+	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:127)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:404)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:495)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:905)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	... 1 more
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:17,590 DEBUG [NettyClientWorker-4-3][NettyClientHandler.java:121] -  [DUBBO] IdleStateEvent triggered, send heartbeat to channel NettyChannel [channel=[id: 0x0e5f4917, L:/192.168.10.1:49918 - R:/192.168.10.1:20880]], dubbo version: 2.7.3, current host: 172.27.156.123
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:17,593 DEBUG [NettyClientWorker-4-3][HeartbeatHandler.java:84] -  [DUBBO] Receive heartbeat response in thread NettyClientWorker-4-3, dubbo version: 2.7.3, current host: 172.27.156.123
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:18,844 DEBUG [NettyClientWorker-4-7][NettyClientHandler.java:121] -  [DUBBO] IdleStateEvent triggered, send heartbeat to channel NettyChannel [channel=[id: 0x1b9141a3, L:/192.168.117.139:63180 - R:/192.168.117.139:20896]], dubbo version: 2.7.3, current host: 172.27.156.123
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:18,847 DEBUG [NettyClientWorker-4-7][HeartbeatHandler.java:84] -  [DUBBO] Receive heartbeat response in thread NettyClientWorker-4-7, dubbo version: 2.7.3, current host: 172.27.156.123
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:19,439 ERROR [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:51] -  [DUBBO] Fail to connect to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20881]], dubbo version: 2.7.3, current host: 192.168.117.139
+org.apache.dubbo.remoting.RemotingException: client(url: dubbo://172.27.156.123:20881/com.alibaba.cloud.dubbo.service.DubboMetadataService?anyhost=true&application=payment-agent-service&bind.ip=172.27.156.123&bind.port=20881&check=false&codec=dubbo&deprecated=false&dubbo=2.0.2&dynamic=true&generic=true&group=uaa-service&heartbeat=60000&interface=com.alibaba.cloud.dubbo.service.DubboMetadataService&lazy=false&methods=getAllServiceKeys,getServiceRestMetadata,getExportedURLs,getAllExportedURLs&pid=6920&qos.enable=false&qos.port=22270&register=true&register.ip=192.168.117.139&release=2.7.3&remote.application=uaa-service&retries=-1&revision=2.1.0.RELEASE&side=consumer&sticky=false&timeout=3000&timestamp=1651644077162&version=1.0.0) failed to connect to server /172.27.156.123:20881 client-side timeout 3000ms (elapsed: 3022ms) from netty client 192.168.117.139 using dubbo version 2.7.3
+	at org.apache.dubbo.remoting.transport.netty4.NettyClient.doConnect(NettyClient.java:171)
+	at org.apache.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:190)
+	at org.apache.dubbo.remoting.transport.AbstractClient.reconnect(AbstractClient.java:246)
+	at org.apache.dubbo.remoting.exchange.support.header.HeaderExchangeClient.reconnect(HeaderExchangeClient.java:155)
+	at org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask.doTask(ReconnectTimerTask.java:49)
+	at org.apache.dubbo.remoting.exchange.support.header.AbstractTimerTask.run(AbstractTimerTask.java:87)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:648)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:727)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$Worker.run(HashedWheelTimer.java:449)
+	at java.lang.Thread.run(Thread.java:748)
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:22,192 WARN [ThreadPoolTaskScheduler-1][DubboServiceMetadataRepository.java:216] - Current application will subscribe all services(size:7) in registry, a lot of memory and CPU cycles may be used, thus it's strongly recommend you using the externalized property 'dubbo.cloud.subscribed-services' to specify the services
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:24,344 INFO [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:48] -  [DUBBO] Initial connection to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20880]], dubbo version: 2.7.3, current host: 192.168.117.139
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:27,348 ERROR [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:51] -  [DUBBO] Fail to connect to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20880]], dubbo version: 2.7.3, current host: 192.168.117.139
+org.apache.dubbo.remoting.RemotingException: client(url: dubbo://172.27.156.123:20880/com.alibaba.cloud.dubbo.service.DubboMetadataService?anyhost=true&application=transaction-service&bind.ip=172.27.156.123&bind.port=20880&check=false&codec=dubbo&deprecated=false&dubbo=2.0.2&dynamic=true&generic=true&group=user-service&heartbeat=60000&interface=com.alibaba.cloud.dubbo.service.DubboMetadataService&lazy=false&methods=getAllServiceKeys,getServiceRestMetadata,getExportedURLs,getAllExportedURLs&pid=19040&qos.enable=false&qos.port=22250&register=true&register.ip=192.168.117.139&release=2.7.3&remote.application=user-service&retries=-1&revision=2.1.0.RELEASE&side=consumer&sticky=false&timeout=3000&timestamp=1651645061844&version=1.0.0) failed to connect to server /172.27.156.123:20880 client-side timeout 3000ms (elapsed: 3004ms) from netty client 192.168.117.139 using dubbo version 2.7.3
+	at org.apache.dubbo.remoting.transport.netty4.NettyClient.doConnect(NettyClient.java:171)
+	at org.apache.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:190)
+	at org.apache.dubbo.remoting.transport.AbstractClient.reconnect(AbstractClient.java:246)
+	at org.apache.dubbo.remoting.exchange.support.header.HeaderExchangeClient.reconnect(HeaderExchangeClient.java:155)
+	at org.apache.dubbo.remoting.exchange.support.header.ReconnectTimerTask.doTask(ReconnectTimerTask.java:49)
+	at org.apache.dubbo.remoting.exchange.support.header.AbstractTimerTask.run(AbstractTimerTask.java:87)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:648)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:727)
+	at org.apache.dubbo.common.timer.HashedWheelTimer$Worker.run(HashedWheelTimer.java:449)
+	at java.lang.Thread.run(Thread.java:748)
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:27,350 INFO [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:48] -  [DUBBO] Initial connection to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20881]], dubbo version: 2.7.3, current host: 192.168.117.139
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:28,650 INFO [dubbo-client-idleCheck-thread-1][ReconnectTimerTask.java:48] -  [DUBBO] Initial connection to HeaderExchangeClient [channel=org.apache.dubbo.remoting.transport.netty4.NettyClient [192.168.117.139:0 -> /172.27.156.123:20880]], dubbo version: 2.7.3, current host: 192.168.117.139
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:29,417 DEBUG [PollingServerListUpdater-0][DynamicServerListLoadBalancer.java:241] - List of Servers for transaction-service obtained from Discovery client: [192.168.10.1:56050]
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:29,418 DEBUG [PollingServerListUpdater-0][DynamicServerListLoadBalancer.java:246] - Filtered List of Servers for transaction-service obtained from Discovery client: [192.168.10.1:56050]
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:29,418 DEBUG [PollingServerListUpdater-0][BaseLoadBalancer.java:491] - LoadBalancer [transaction-service]: clearing server list (SET op)
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:29,418 DEBUG [PollingServerListUpdater-0][BaseLoadBalancer.java:507] - LoadBalancer [transaction-service]:  addServer [192.168.10.1:56050]
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:29,419 DEBUG [PollingServerListUpdater-0][DynamicServerListLoadBalancer.java:179] - Setting server list for zones: {unknown=[192.168.10.1:56050]}
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:29,419 DEBUG [PollingServerListUpdater-0][BaseLoadBalancer.java:491] - LoadBalancer [transaction-service_unknown]: clearing server list (SET op)
+[${project.name}][${env:SERVER_PORT}] 2022-05-04 15:00:29,419 DEBUG [PollingServerListUpdater-0][BaseLoadBalancer.java:507] - LoadBalancer [transaction-service_unknown]:  addServer [192.168.10.1:56050]

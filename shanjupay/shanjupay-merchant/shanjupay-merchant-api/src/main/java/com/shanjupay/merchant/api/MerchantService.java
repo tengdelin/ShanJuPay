@@ -1,6 +1,7 @@
 package com.shanjupay.merchant.api;
 
 import com.shanjupay.common.domain.BusinessException;
+import com.shanjupay.common.domain.PageVO;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
 import com.shanjupay.merchant.api.dto.StaffDTO;
 import com.shanjupay.merchant.api.dto.StoreDTO;
@@ -36,6 +37,7 @@ public interface MerchantService {
     void applyMerchant(Long merchantId,MerchantDTO merchantDTO) throws BusinessException;
 
 
+
     /**
      * 新增门店
      * @param storeDTO 门店信息
@@ -62,5 +64,12 @@ public interface MerchantService {
      */
     void bindStaffToStore(Long storeId, Long staffId) throws BusinessException;
 
-
+    /**
+     * 门店列表的查询
+     * @param storeDTO 查询条件，必要参数：商户id
+     * @param pageNo  页码
+     * @param pageSize 分页记录数
+     * @return
+     */
+    PageVO<StoreDTO> queryStoreByPage(StoreDTO storeDTO,Integer pageNo,Integer pageSize);
 }
