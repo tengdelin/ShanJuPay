@@ -2,8 +2,11 @@ package com.shanjupay.merchant.service;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.common.domain.CommonErrorCode;
+import com.shanjupay.common.domain.PageVO;
 import com.shanjupay.common.util.PhoneUtil;
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
@@ -23,11 +26,13 @@ import com.shanjupay.merchant.mapper.StoreStaffMapper;
 import com.shanjupay.user.api.TenantService;
 import com.shanjupay.user.api.dto.tenant.CreateTenantRequestDTO;
 import com.shanjupay.user.api.dto.tenant.TenantDTO;
-import org.apache.commons.lang3.StringUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Administrator.
@@ -76,29 +81,30 @@ public class MerchantServiceImpl implements MerchantService {
     /**
      * 注册商户服务接口，接收账号、密码、手机号，为了可扩展性使用merchantDto接收数据
      * 调用SaaS接口：新增租户、用户、绑定租户和用户的关系，初始化权限
+     *
      * @param merchantDTO 商户注册信息
      * @return 注册成功的商户信息
      */
     @Override
     public MerchantDTO createMerchant(MerchantDTO merchantDTO) throws BusinessException {
         //校验参数的合法性
-        if(merchantDTO == null){
+        if (merchantDTO == null) {
             throw new BusinessException(CommonErrorCode.E_100108);
         }
-        if(StringUtils.isBlank(merchantDTO.getMobile())){
+        if (StringUtils.isBlank(merchantDTO.getMobile())) {
             throw new BusinessException(CommonErrorCode.E_100112);
         }
-        if(StringUtils.isBlank(merchantDTO.getPassword())){
+        if (StringUtils.isBlank(merchantDTO.getPassword())) {
             throw new BusinessException(CommonErrorCode.E_100111);
         }
         //手机号格式校验
-        if(!PhoneUtil.isMatches(merchantDTO.getMobile())){
+        if (!PhoneUtil.isMatches(merchantDTO.getMobile())) {
             throw new BusinessException(CommonErrorCode.E_100109);
         }
         //校验手机号的唯一性
         //根据手机号查询商户表，如果存在记录则说明手机号已存在
         Integer count = merchantMapper.selectCount(new LambdaQueryWrapper<Merchant>().eq(Merchant::getMobile, merchantDTO.getMobile()));
-        if(count>0){
+        if (count > 0) {
             throw new BusinessException(CommonErrorCode.E_100113);
         }
 
@@ -129,7 +135,7 @@ public class MerchantServiceImpl implements MerchantService {
         //如果租户在SaaS已经存在，SaaS直接 返回此租户的信息，否则进行添加
         TenantDTO tenantAndAccount = tenantService.createTenantAndAccount(createTenantRequestDTO);
         //获取租户的id
-        if(tenantAndAccount == null || tenantAndAccount.getId() == null){
+        if (tenantAndAccount == null || tenantAndAccount.getId() == null) {
             throw new BusinessException(CommonErrorCode.E_200012);
         }
         //租户的id
@@ -138,7 +144,7 @@ public class MerchantServiceImpl implements MerchantService {
         //租户id在商户表唯一
         //根据租户id从商户表查询，如果存在记录则不允许添加商户
         Integer count1 = merchantMapper.selectCount(new LambdaQueryWrapper<Merchant>().eq(Merchant::getTenantId, tenantId));
-        if(count1>0){
+        if (count1 > 0) {
             throw new BusinessException(CommonErrorCode.E_200017);
         }
 
@@ -171,13 +177,14 @@ public class MerchantServiceImpl implements MerchantService {
         StaffDTO staff = createStaff(staffDTO);
 
         //为门店设置管理员
-        bindStaffToStore(store.getId(),staff.getId());
+        bindStaffToStore(store.getId(), staff.getId());
 
         //将dto中写入新增商户的id
 //        merchantDTO.setId(merchant.getId());
         //将entity转成dto
         return MerchantConvert.INSTANCE.entity2dto(merchant);
     }
+
     /**
      * 资质申请接口
      *
@@ -272,6 +279,38 @@ public class MerchantServiceImpl implements MerchantService {
         storeStaff.setStaffId(staffId);//员工id
         storeStaff.setStoreId(storeId);//门店id
         storeStaffMapper.insert(storeStaff);
+    }
+
+    /**
+     * 门店列表的查询
+     *
+     * @param storeDTO 查询条件，必要参数：商户id
+     * @param pageNo   页码
+     * @param pageSize 分页记录数
+     * @return
+     */
+    @Override
+    public PageVO<StoreDTO> queryStoreByPage(StoreDTO storeDTO, Integer pageNo, Integer pageSize) {
+        //分页条件
+        Page<Store> page = new Page<>(pageNo, pageSize);
+        //查询条件拼装
+        LambdaQueryWrapper<Store> lambdaQueryWrapper = new LambdaQueryWrapper<Store>();
+        //如果 传入商户id，此时要拼装 查询条件
+        if (storeDTO != null && storeDTO.getMerchantId() != null) {
+            lambdaQueryWrapper.eq(Store::getMerchantId, storeDTO.getMerchantId());
+        }
+        //再拼装其它查询条件 ，比如：门店名称
+        if (storeDTO != null && StringUtils.isNotEmpty(storeDTO.getStoreName())) {
+            lambdaQueryWrapper.eq(Store::getStoreName, storeDTO.getStoreName());
+        }
+
+        //分页查询数据库
+        IPage<Store> storeIPage = storeMapper.selectPage(page, lambdaQueryWrapper);
+        //查询列表
+        List<Store> records = storeIPage.getRecords();
+        //将包含entity的list转成包含dto的list
+        List<StoreDTO> storeDTOS = StoreConvert.INSTANCE.listentity2dto(records);
+        return new PageVO(storeDTOS, storeIPage.getTotal(), pageNo, pageSize);
     }
 
     /**

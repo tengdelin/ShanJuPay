@@ -20,22 +20,39 @@
         <module name="shanjupay-uaa-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="shanjupay" target="1.8" />
+      <module name="shanjupay-common" target="1.8" />
+      <module name="shanjupay-gateway" target="1.8" />
+      <module name="shanjupay-gateway-service" target="1.8" />
+      <module name="shanjupay-merchant" target="1.8" />
+      <module name="shanjupay-merchant-api" target="1.8" />
+      <module name="shanjupay-merchant-application" target="1.8" />
+      <module name="shanjupay-merchant-service" target="1.8" />
+      <module name="shanjupay-transaction" target="1.8" />
+      <module name="shanjupay-transaction-api" target="1.8" />
+      <module name="shanjupay-transaction-service" target="1.8" />
+      <module name="shanjupay-uaa" target="1.8" />
+      <module name="shanjupay-uaa-api" target="1.8" />
+      <module name="shanjupay-uaa-service" target="1.8" />
+      <module name="shanjupay-user" target="1.8" />
+      <module name="shanjupay-user-api" target="1.8" />
+      <module name="shanjupay-user-service" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="shanjupay" options="" />
-      <module name="shanjupay-common" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay" options="-parameters" />
+      <module name="shanjupay-common" options="-parameters -bootclasspath &quot;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
       <module name="shanjupay-gateway-service" options="-parameters" />
-      <module name="shanjupay-merchant" options="" />
       <module name="shanjupay-merchant-api" options="-parameters" />
       <module name="shanjupay-merchant-application" options="-parameters" />
       <module name="shanjupay-merchant-service" options="-parameters" />
-      <module name="shanjupay-transaction" options="" />
-      <module name="shanjupay-transaction-api" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay-transaction-api" options="-parameters -bootclasspath &quot;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
       <module name="shanjupay-transaction-service" options="-parameters" />
-      <module name="shanjupay-uaa-api" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay-uaa-api" options="-parameters -bootclasspath &quot;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
       <module name="shanjupay-uaa-service" options="-parameters" />
-      <module name="shanjupay-user-api" options="-parameters -bootclasspath &quot;C:/Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;C:/Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
+      <module name="shanjupay-user-api" options="-parameters -bootclasspath &quot;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/rt.jar;$PROJECT_DIR$/../../../../../../Program Files/Java/jdk1.8.0_301/jre/lib/jce.jar&quot;" />
       <module name="shanjupay-user-service" options="-parameters" />
     </option>
   </component>

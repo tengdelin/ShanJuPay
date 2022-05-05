@@ -3,9 +3,7 @@
     <properties>
         <property name="prjname">${project.name}</property>
         <property name="logdir">logs</property>
-        <property name="PATTERN">[${project.name}][${env:SERVER_PORT}] %date{YYYY-MM-dd HH:mm:ss,SSS} %highlight{%level}
-            [%thread][%file:%line] - %msg%n%throwable
-        </property>
+        <property name="PATTERN">[${project.name}][${env:SERVER_PORT}] %date{YYYY-MM-dd HH:mm:ss,SSS} %highlight{%level} [%thread][%file:%line] - %msg%n%throwable</property>
     </properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
@@ -17,7 +15,7 @@
             <PatternLayout pattern="${PATTERN}"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
             </Policies>
         </RollingFile>
 
@@ -26,7 +24,7 @@
             <PatternLayout pattern="${PATTERN}"/>
             <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
             </Policies>
         </RollingFile>
 
